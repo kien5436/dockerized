@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  server:
+    container_name: dockerized_server
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: ${BUILD_STAGE}
+    ports:
+      - "${PORT}:8000"
+    command: yarn start
+    volumes:
+      - ./:/project
